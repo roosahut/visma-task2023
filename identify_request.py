@@ -3,15 +3,13 @@ from urllib.parse import urlparse, parse_qsl
 
 class IdentifyRequest:
     def __init__(self, uri: str):
-        self._parse_uri(uri)
+        self.uri = uri
+        self._parse_uri()
 
-    def _parse_uri(self, uri: str):
+    def _parse_uri(self):
         """Parses the given uri with urllib library functions.
-
-        Args:
-            uri (str): The given uri.
         """
-        parsed_uri = urlparse(uri)
+        parsed_uri = urlparse(self.uri)
 
         self.scheme = parsed_uri.scheme
         self.path = parsed_uri.netloc
